@@ -1,0 +1,2134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crimson Desert — Full Armor & Weapon Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #080b12;
+      --bg2: #0d1117;
+      --card: #111827;
+      --card2: #0f1621;
+      --accent: #4fc3f7;
+      --accent-dim: rgba(79,195,247,0.12);
+      --accent-border: rgba(79,195,247,0.25);
+      --text: #e2e8f0;
+      --text-muted: #64748b;
+      --text-dim: #94a3b8;
+      --border: #1e293b;
+      --frost: #a5f3fc;
+      --fire: #fb923c;
+      --earth: #a3e635;
+      --shadow: #c084fc;
+      --light: #fef08a;
+      --ice: #7dd3fc;
+      --purple: #a78bfa;
+      --orange: #fb923c;
+      --green: #4ade80;
+      --red: #f87171;
+      --gold: #fbbf24;
+      --lightning: #facc15;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── HEADER ─── */
+    .site-header {
+      background:
+        linear-gradient(180deg, rgba(8,11,18,0) 0%, var(--bg) 100%),
+        url('https://www.powerpyx.com/wp-content/uploads/crimson-desert-full-world-map.jpg') center/cover no-repeat;
+      min-height: 52vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 2rem 1.25rem 2.5rem;
+      position: relative;
+    }
+
+    .site-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(8,11,18,0.2) 0%, rgba(8,11,18,0.97) 100%);
+      pointer-events: none;
+    }
+
+    .header-inner { position: relative; z-index: 1; max-width: 640px; }
+
+    .site-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(79,195,247,0.1);
+      border: 1px solid rgba(79,195,247,0.25);
+      color: var(--accent);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.75rem;
+      border-radius: 100px;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.6rem, 7vw, 2.8rem);
+      font-weight: 900;
+      line-height: 1.1;
+      background: linear-gradient(135deg, #fff 20%, var(--frost) 80%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+    }
+
+    .header-sub {
+      color: var(--text-dim);
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.55;
+    }
+
+    .header-stats {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+
+    .h-stat {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.5rem 0.85rem;
+      font-size: 0.78rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .h-stat strong { color: #fff; font-size: 0.88rem; }
+
+    /* ─── NAV TABS ─── */
+    .tab-nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(8,11,18,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      overflow-x: auto;
+      scrollbar-width: none;
+      gap: 0;
+    }
+
+    .tab-nav::-webkit-scrollbar { display: none; }
+
+    .tab-btn {
+      flex-shrink: 0;
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      color: var(--text-muted);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.9rem 1.1rem;
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      white-space: nowrap;
+    }
+
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ─── SECTIONS ─── */
+    .tab-content { display: none; padding: 1.25rem 1.25rem 3rem; }
+    .tab-content.active { display: block; }
+
+    .section-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-intro {
+      font-size: 0.82rem;
+      color: var(--text-dim);
+      margin-bottom: 1.25rem;
+      line-height: 1.6;
+    }
+
+    /* ─── SET CATEGORY ─── */
+    .set-category {
+      margin-bottom: 2.5rem;
+    }
+
+    .set-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .set-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .set-icon.frost { background: rgba(165,243,252,0.1); border: 1px solid rgba(165,243,252,0.25); }
+    .set-icon.fire  { background: rgba(251,146,60,0.1);  border: 1px solid rgba(251,146,60,0.25); }
+    .set-icon.earth { background: rgba(163,230,53,0.1);  border: 1px solid rgba(163,230,53,0.25); }
+    .set-icon.shadow{ background: rgba(192,132,252,0.1); border: 1px solid rgba(192,132,252,0.25); }
+    .set-icon.light { background: rgba(254,240,138,0.1); border: 1px solid rgba(254,240,138,0.25); }
+    .set-icon.water { background: rgba(125,211,252,0.1); border: 1px solid rgba(125,211,252,0.25); }
+    .set-icon.nature{ background: rgba(74,222,128,0.1);  border: 1px solid rgba(74,222,128,0.25); }
+    .set-icon.storm { background: rgba(250,204,21,0.1); border: 1px solid rgba(250,204,21,0.25); }
+    .set-icon.dark  { background: rgba(139,92,246,0.1); border: 1px solid rgba(139,92,246,0.25); }
+    .set-icon.neutral{ background: rgba(148,163,184,0.1);border: 1px solid rgba(148,163,184,0.25); }
+    .set-icon.gold  { background: rgba(251,191,36,0.1); border: 1px solid rgba(251,191,36,0.25); }
+    .set-icon.cursed{ background: rgba(248,113,113,0.1); border: 1px solid rgba(248,113,113,0.25); }
+    .set-icon.samurai{ background: rgba(226,175,175,0.1); border: 1px solid rgba(226,175,175,0.25); }
+
+    .set-title-group { flex: 1; min-width: 0; }
+
+    .set-name {
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.2;
+    }
+
+    .set-meta {
+      font-size: 0.73rem;
+      color: var(--text-muted);
+      margin-top: 0.15rem;
+    }
+
+    .set-meta .region-tag {
+      display: inline-block;
+      background: rgba(79,195,247,0.08);
+      color: var(--accent);
+      font-size: 0.62rem;
+      font-weight: 600;
+      padding: 0.1rem 0.45rem;
+      border-radius: 4px;
+      margin-left: 0.3rem;
+    }
+
+    /* ─── PIECE ROWS ─── */
+    .piece-list { display: flex; flex-direction: column; gap: 0.5rem; }
+
+    .piece-row {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+
+    .piece-row:target {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px var(--accent), 0 0 20px rgba(79,195,247,0.12);
+    }
+
+    .piece-toggle {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 0.85rem 1rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+      width: 100%;
+      text-align: left;
+      text-decoration: none;
+      color: inherit;
+      transition: background 0.15s;
+    }
+
+    .piece-toggle:hover { background: rgba(255,255,255,0.02); }
+
+    .piece-emoji {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      background: rgba(79,195,247,0.07);
+      border: 1px solid rgba(79,195,247,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .piece-info { flex: 1; min-width: 0; }
+
+    .piece-slot {
+      font-size: 0.6rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      margin-bottom: 0.08rem;
+    }
+
+    .piece-item-name {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #fff;
+      line-height: 1.3;
+    }
+
+    .piece-loc {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-top: 0.12rem;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .expand-chevron {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.04);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      flex-shrink: 0;
+      transition: transform 0.2s, background 0.2s, color 0.2s;
+    }
+
+    .piece-row.open .expand-chevron {
+      transform: rotate(180deg);
+      background: rgba(79,195,247,0.12);
+      color: var(--accent);
+    }
+
+    .piece-body { display: none; padding: 0 1rem 1rem; }
+
+    .piece-row.open .piece-body { display: block; }
+
+    .piece-stats-row {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+      padding: 0.75rem 0;
+      border-top: 1px solid var(--border);
+      margin-top: 0.5rem;
+    }
+
+    .pstat {
+      background: rgba(255,255,255,0.03);
+      border-radius: 6px;
+      padding: 0.35rem 0.6rem;
+      text-align: center;
+      min-width: 58px;
+    }
+
+    .pstat .v { font-size: 0.8rem; font-weight: 700; color: #fff; }
+    .pstat .l { font-size: 0.58rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; }
+
+    .steps { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.5rem; }
+
+    .step {
+      display: flex;
+      gap: 0.65rem;
+      align-items: flex-start;
+      font-size: 0.82rem;
+      color: var(--text-dim);
+      line-height: 1.55;
+    }
+
+    .sn {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: rgba(79,195,247,0.1);
+      border: 1px solid rgba(79,195,247,0.25);
+      color: var(--accent);
+      font-size: 0.6rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 0.08rem;
+    }
+
+    .step strong { color: var(--text); }
+
+    .tip-box {
+      background: rgba(79,195,247,0.06);
+      border: 1px solid rgba(79,195,247,0.18);
+      border-radius: 8px;
+      padding: 0.6rem 0.75rem;
+      margin-top: 0.7rem;
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      display: flex;
+      gap: 0.5rem;
+      align-items: flex-start;
+      line-height: 1.5;
+    }
+
+    .tip-box::before { content: '💡'; flex-shrink: 0; }
+
+    /* ─── FULL SET BONUS ─── */
+    .full-set-bonus {
+      background: rgba(79,195,247,0.07);
+      border: 1px solid rgba(79,195,247,0.18);
+      border-radius: 12px;
+      padding: 1rem 1.1rem;
+      margin-top: 0.75rem;
+    }
+
+    .full-set-bonus .bonus-label {
+      font-size: 0.62rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      margin-bottom: 0.3rem;
+    }
+
+    .full-set-bonus .bonus-text {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 0.25rem;
+    }
+
+    .full-set-bonus .bonus-desc {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* ─── WEAPON CARDS ─── */
+    .weapon-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+      gap: 0.75rem;
+    }
+
+    .weapon-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 0.9rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .weapon-card:hover {
+      border-color: var(--accent-border);
+      transform: translateY(-2px);
+    }
+
+    .weapon-icon { font-size: 1.8rem; margin-bottom: 0.5rem; }
+
+    .weapon-type {
+      font-size: 0.6rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      margin-bottom: 0.2rem;
+    }
+
+    .weapon-name {
+      font-family: 'Cinzel', serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #fff;
+      line-height: 1.3;
+      margin-bottom: 0.35rem;
+    }
+
+    .weapon-desc {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 0.4rem;
+    }
+
+    .weapon-stat {
+      display: inline-block;
+      background: rgba(79,195,247,0.06);
+      color: var(--text-dim);
+      font-size: 0.6rem;
+      padding: 0.15rem 0.45rem;
+      border-radius: 100px;
+      margin-top: 0.3rem;
+      border: 1px solid rgba(79,195,247,0.1);
+    }
+
+    .weapon-tag {
+      display: inline-block;
+      background: rgba(79,195,247,0.08);
+      color: var(--text-dim);
+      font-size: 0.62rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 100px;
+      margin-top: 0.35rem;
+      border: 1px solid rgba(79,195,247,0.12);
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      text-align: center;
+      padding: 2rem 1.25rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    footer a { color: var(--accent); text-decoration: none; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (min-width: 640px) {
+      .weapon-grid { grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); }
+      .tab-content { padding: 1.5rem 2rem 3rem; }
+      .site-header { padding: 2.5rem 2rem 3rem; }
+    }
+
+    /* ─── INDEX BANNER ─── */
+    .index-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 0.6rem;
+      margin-bottom: 2rem;
+    }
+
+    .index-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0.85rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.2s, transform 0.15s;
+      cursor: pointer;
+    }
+
+    .index-card:hover {
+      border-color: var(--accent-border);
+      transform: translateX(3px);
+    }
+
+    .index-card-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .index-card-name {
+      font-family: 'Cinzel', serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #fff;
+      line-height: 1.3;
+    }
+
+    .index-card-meta {
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      margin-top: 0.1rem;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── HEADER ─── -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="site-badge">📍 Crimson Desert — Complete Guide</div>
+    <h1>Armor Sets &<br>Weapons</h1>
+    <p class="header-sub">Every armor set and weapon in Crimson Desert — with exact locations, stats, and step-by-step walkthroughs.</p>
+    <div class="header-stats">
+      <div class="h-stat"><strong>9</strong> <span>Armor Sets</span></div>
+      <div class="h-stat"><strong>15+</strong> <span>Weapons</span></div>
+      <div class="h-stat"><strong>Full Stats</strong> <span>+ Locations</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- ─── STICKY TAB NAV ─── -->
+<nav class="tab-nav">
+  <button class="tab-btn active" onclick="switchTab('armor')">🛡️ Armor Sets</button>
+  <button class="tab-btn" onclick="switchTab('weapons')">⚔️ Weapons</button>
+</nav>
+
+<!-- ══════════════════════════════════════════════
+     ARMOR SETS TAB
+══════════════════════════════════════════════ -->
+<div class="tab-content active" id="tab-armor">
+
+  <!-- ─── ARMOR SET INDEX ─── -->
+  <div class="section-label">Jump to Set</div>
+  <div class="index-grid">
+    <div class="index-card" onclick="document.getElementById('frostcursed').scrollIntoView({behavior:'smooth'}); return false;">
+      <div class="index-card-icon" style="background:rgba(165,243,252,0.1);border:1px solid rgba(165,243,252,0.25)">❄️</div>
+      <div><div class="index-card-name">Frostcursed</div><div class="index-card-meta">Ice Resistance · Demeniss</div></div>
+    </div>
+    <div class="index-card" onclick="document.getElementById('shadow').scrollIntoView({behavior:'smooth'}); return false;">
+      <div class="index-card-icon" style="background:rgba(192,132,252,0.1);border:1px solid rgba(192,132,252,0.25)">🌑</div>
+      <div><div class="index-card-name">Armor of the Shadows</div><div class="index-card-meta">Stealth · Hernand</div></div>
+    </div>
+    <div class="index-card" onclick="document.getElementById('darkmarksman').scrollIntoView({behavior:'smooth'}); return false;">
+      <div class="index-card-icon" style="background:rgba(251,146,60,0.1);border:1px solid rgba(251,146,60,0.25)">🏹</div>
+      <div><div class="index-card-name">Dark Marksman</div><div class="index-card-meta">Fire Resistance · Demeniss</div></div>
+    </div>
+    <div class="index-card" onclick="document.getElementById('fallen').scrollIntoView({behavior:'smooth'}); return false;">
+      <div class="index-card-icon" style="background:rgba(250,204,21,0.1);border:1px solid rgba(250,204,21,0.25)">⚡</div>
+      <div><div class="index-card-name">Fallen Kingdom</div><div class="index-card-meta">Lightning Resistance · Hernand</div></div>
+    </div>
+    <div class="index-card" onclick="document.getElementById('scorchflame').scrollIntoView({behavior:'smooth'}); return false;">
+      <div class="index-card-icon" style="background:rgba(251,146,60,0.1);border:1px solid rgba(251,146,60,0.25)">🔥</div>
+      <div><div class="index-card-name">Scorchflame Knight</div><div class="index-card-meta">Fire Resistance · Demeniss</div></div>
+    </div>
+    <div class="index-card" onclick="document.getElementById('cursed').scrollIntoView({behavior:'smooth'}); return false;">
+      <div class="index-card-icon" style="background:rgba(248,113,113,0.1);border:1px solid rgba(248,113,113,0.25)">💀</div>
+      <div><div class="index-card-name">Cursed Soul</div><div class="index-card-meta">Mixed · South Demeniss</div></div>
+    </div>
+    <div class="index-card" onclick="document.getElementById('executioner').scrollIntoView({behavior:'smooth'}); return false;">
+      <div class="index-card-icon" style="background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.25)">⚔️</div>
+      <div><div class="index-card-name">Executioner of Darkness</div><div class="index-card-meta">Multi-region</div></div>
+    </div>
+    <div class="index-card" onclick="document.getElementById('samurai').scrollIntoView({behavior:'smooth'}); return false;">
+      <div class="index-card-icon" style="background:rgba(226,175,175,0.1);border:1px solid rgba(226,175,175,0.25)">🗡️</div>
+      <div><div class="index-card-name">Odeck's Protector (Samurai)</div><div class="index-card-meta">Mixed · Pailune / Hernand</div></div>
+    </div>
+    <div class="index-card" onclick="document.getElementById('golden').scrollIntoView({behavior:'smooth'}); return false;">
+      <div class="index-card-icon" style="background:rgba(251,191,36,0.1);border:1px solid rgba(251,191,36,0.25)">👑</div>
+      <div><div class="index-card-name">Golden Greed</div><div class="index-card-meta">Fire Resistance · Tashkalp</div></div>
+    </div>
+  </div>
+
+  <!-- ════════════════════
+       FROSTCURSED SET
+  ════════════════════ -->
+  <div class="set-category" id="frostcursed">
+    <div class="set-header">
+      <div class="set-icon frost">❄️</div>
+      <div class="set-title-group">
+        <div class="set-name">Frostcursed Armor Set</div>
+        <div class="set-meta">Ice Resistance · Demeniss <span class="region-tag">Western Demeniss</span></div>
+      </div>
+    </div>
+    <div class="piece-list">
+
+      <!-- Helm -->
+      <div class="piece-row" id="frost-helm">
+        <a class="piece-toggle" href="#frost-helm" onclick="event.preventDefault(); togglePiece(this)">
+          <div class="piece-emoji">🪖</div>
+          <div class="piece-info">
+            <div class="piece-slot">Head</div>
+            <div class="piece-item-name">Frostcursed Plate Helm</div>
+            <div class="piece-loc">📍 Chattering Rocks, Demeniss</div>
+          </div>
+          <div class="expand-chevron">▼</div>
+        </a>
+        <div class="piece-body">
+          <div class="piece-stats-row">
+            <div class="pstat"><div class="v">5</div><div class="l">DEF</div></div>
+            <div class="pstat"><div class="v">3</div><div class="l">REF</div></div>
+            <div class="pstat"><div class="v">Daze Immune</div><div class="l">SPEC</div></div>
+          </div>
+          <div class="steps">
+            <div class="step"><div class="sn">1</div><div>Head <strong>north of Demeniss</strong>, above the "D" on the map. Find <strong style="color:var(--frost)">Chattering Rocks</strong>.</div></div>
+            <div class="step"><div class="sn">2</div><div>Look for the wall covered in <strong style="color:#fff">green vines</strong>. Use <strong style="color:var(--frost)">Blinding Flash (L1+R1+L1)</strong> to burn them away.</div></div>
+            <div class="step"><div class="sn">3</div><div>Push through into the revealed room. The <strong style="color:var(--frost)">Treasure Chest</strong> glows from outside — grab it.</div></div>
+          </div>
+          <div class="tip-box">Watch for <strong>rock monsters</strong> guarding the area — sneak straight to the loot or prepare for a fight.</div>
+        </div>
+      </div>
+
+      <!-- Gloves -->
+      <div class="piece-row" id="frost-gloves">
+        <a class="piece-toggle" href="#frost-gloves" onclick="event.preventDefault(); togglePiece(this)">
+          <div class="piece-emoji">🧤</div>
+          <div class="piece-info">
+            <div class="piece-slot">Hands</div>
+            <div class="piece-item-name">Frostcursed Plate Gloves</div>
+            <div class="piece-loc">📍 Lunar Spirit Grotto, Denn River</div>
+          </div>
+          <div class="expand-chevron">▼</div>
+        </a>
+        <div class="piece-body">
+          <div class="piece-stats-row">
+            <div class="pstat"><div class="v">5</div><div class="l">DEF</div></div>
+            <div class="pstat"><div class="v">3</div><div class="l">REF</div></div>
+            <div class="pstat"><div class="v">Ice Res Lv7</div><div class="l">SPEC</div></div>
+          </div>
+          <div class="steps">
+            <div class="step"><div class="sn">1</div><div>Go to <strong style="color:var(--frost)">Lunar Spirit Grotto</strong> on the <strong style="color:#fff">Denn River</strong>. Look for the break in the river on your map — the waterfall entrance.</div></div>
+            <div class="step"><div class="sn">2</div><div>Enter the waterfall from the <strong style="color:#fff">left side only</strong>. There's a gap in the water flow.</div></div>
+            <div class="step"><div class="sn">3</div><div>Find the <strong style="color:var(--frost)">Stacked Stones</strong> landmark — you're in the right place. Gloves are behind the waterfall.</div></div>
+          </div>
+          <div class="tip-box">The stacked stones are your landmark — if you don't see them, you're at the wrong part of the waterfall.</div>
+        </div>
+      </div>
+
+      <!-- Cloak -->
+      <div class="piece-row" id="frost-cloak">
+        <a class="piece-toggle" href="#frost-cloak" onclick="event.preventDefault(); togglePiece(this)">
+          <div class="piece-emoji">🧥</div>
+          <div class="piece-info">
+            <div class="piece-slot">Back</div>
+            <div class="piece-item-name">Frostcursed Plate Cloak</div>
+            <div class="piece-loc">📍 Sanctum of Expiation, Demeniss</div>
+          </div>
+          <div class="expand-chevron">▼</div>
+        </a>
+        <div class="piece-body">
+          <div class="piece-stats-row">
+            <div class="pstat"><div class="v">3</div><div class="l">DEF</div></div>
+            <div class="pstat"><div class="v">2</div><div class="l">REF</div></div>
+            <div class="pstat"><div class="v">Ice Res Lv5</div><div class="l">SPEC</div></div>
+          </div>
+          <div class="steps">
+            <div class="step"><div class="sn">1</div><div>Enter the <strong style="color:var(--frost)">Sanctum of Expiation</strong>. Clear the <strong style="color:#fff">Antumbra Order</strong> guards first for an easier run.</div></div>
+            <div class="step"><div class="sn">2</div><div>Inside, find the <strong style="color:#fff">half wall with thorn roots</strong> at the bottom — along the <strong style="color:#fff">right wall</strong>, near the entrance stairs.</div></div>
+            <div class="step"><div class="sn">3</div><div>Stand in a <strong style="color:#fff">corner</strong> and use <strong style="color:var(--frost)">Blinding Light</strong> to burn the roots. Crouch and slip through the gap.</div></div>
+            <div class="step"><div class="sn">4</div><div>Turn right, go back toward where you came. The chest is at the end. <strong style="color:var(--red)">Warning:</strong> triggering the spike trap means fast traveling out.</div></div>
+          </div>
+          <div class="tip-box">The floor near the entrance <strong>crumbles if you stand on it too long</strong>. Move carefully and don't linger by the stairs.</div>
+        </div>
+      </div>
+
+      <!-- Armor -->
+      <div class="piece-row" id="frost-armor">
+        <a class="piece-toggle" href="#frost-armor" onclick="event.preventDefault(); togglePiece(this)">
+          <div class="piece-emoji">🦺</div>
+          <div class="piece-info">
+            <div class="piece-slot">Chest</div>
+            <div class="piece-item-name">Frostcursed Plate Armor</div>
+            <div class="piece-loc">📍 Mistshard Cave, Smoking Lands</div>
+          </div>
+          <div class="expand-chevron">▼</div>
+        </a>
+        <div class="piece-body">
+          <div class="piece-stats-row">
+            <div class="pstat"><div class="v">14</div><div class="l">DEF</div></div>
+            <div class="pstat"><div class="v">3</div><div class="l">REF</div></div>
+            <div class="pstat"><div class="v">Ice Res Lv7</div><div class="l">SPEC</div></div>
+            <div class="pstat"><div class="v">Move Spd +2</div><div class="l">SPEC</div></div>
+          </div>
+          <div class="steps">
+            <div class="step"><div class="sn">1</div><div>Go to <strong style="color:var(--frost)">Mistshard Cave</strong> — far north of <strong style="color:#fff">Demeniss</strong>, within the <strong style="color:#fff">Smoking Lands</strong>. Head north of <strong style="color:#fff">Deadfire Mountain</strong>.</div></div>
+            <div class="step"><div class="sn">2</div><div>Enter through the <strong style="color:#fff">upper right bank</strong>. Behind the waterfall is a wall that looks solid.</div></div>
+            <div class="step"><div class="sn">3</div><div>Use <strong style="color:var(--frost)">Mine</strong> or <strong style="color:var(--frost)">Force Palm</strong> on the <strong style="color:#fff">center of the wall</strong> to reveal a golden passage.</div></div>
+            <div class="step"><div class="sn">4</div><div>Follow the passage down. Chest is inside along with multiple <strong style="color:var(--frost)">Gold Ore</strong> nodes. Bring healing items — toughest fight of the set.</div></div>
+          </div>
+          <div class="tip-box"><strong>Highest defense piece in the set</strong> (+14 DEF). Mistshard Cave is the most dangerous location — bring full healing supplies.</div>
+        </div>
+      </div>
+
+      <!-- Boots -->
+      <div class="piece-row" id="frost-boots">
+        <a class="piece-toggle" href="#frost-boots" onclick="event.preventDefault(); togglePiece(this)">
+          <div class="piece-emoji">👢</div>
+          <div class="piece-info">
+            <div class="piece-slot">Feet</div>
+            <div class="piece-item-name">Frostcursed Plate Boots</div>
+            <div class="piece-loc">📍 Well of Tragedy Grotto, Denn River</div>
+          </div>
+          <div class="expand-chevron">▼</div>
+        </a>
+        <div class="piece-body">
+          <div class="piece-stats-row">
+            <div class="pstat"><div class="v">5</div><div class="l">DEF</div></div>
+            <div class="pstat"><div class="v">2</div><div class="l">REF</div></div>
+            <div class="pstat"><div class="v">Ice Res Lv7</div><div class="l">SPEC</div></div>
+          </div>
+          <div class="steps">
+            <div class="step"><div class="sn">1</div><div>Go to <strong style="color:var(--frost)">Well of Tragedy Grotto</strong>. Head to the <strong style="color:#fff">bottom of the waterfall</strong> — no need to climb ravine walls.</div></div>
+            <div class="step"><div class="sn">2</div><div>Walk through the <strong style="color:#fff">waterfall toward the center</strong>. You'll emerge in a small passage leading to the treasure room.</div></div>
+            <div class="step"><div class="sn">3</div><div>The chest is <strong style="color:var(--frost)">dead center</strong> of the room. Side chests contain additional loot.</div></div>
+          </div>
+          <div class="tip-box"><strong>Easiest chest of the set</strong> — straightforward waterfall entrance with no puzzles, traps, or enemies. Save it for last on your southward route.</div>
+        </div>
+      </div>
+
+    </div>
+    <div class="full-set-bonus">
+      <div class="bonus-label">❄️ Full Set Bonus (5/5)</div>
+      <div class="bonus-text">Ice Resistance Lv 7 + Chilling Death Immunity</div>
+      <div class="bonus-desc">Makes Spire of Frost and western Demeniss fully traversable. Protects against all freezing and chilling death mechanics in high-altitude zones.</div>
+    </div>
+  </div>
+
+  <!-- ════════════════════
+       SHADOW ARMOR SET
+  ════════════════════ -->
+  <div class="set-category" id="shadow">
+    <div class="set-header">
+      <div class="set-icon shadow">🌑</div>
+      <div class="set-title-group">
+        <div class="set-name">Armor of the Shadows</div>
+        <div class="set-meta">Stealth + Visual · Hernand <span class="region-tag">Hernand</span></div>
+      </div>
+    </div>
+    <div class="piece-list">
+
+      <div class="piece-row" id="shadow-helm">
+        <a class="piece-toggle" href="#shadow-helm" onclick="event.preventDefault(); togglePiece(this)">
+          <div class="piece-emoji">🪖</div>
+          <div class="piece-info">
+            <div class="piece-slot">Head</div>
+            <div class="piece-item-name">Plate Helm of the Shadows</div>
+            <div class="piece-loc">📍 Hoenmark Ruins — requires defeating Beloth the Darksworn</div>
+          </div>
+          <div class="expand-chevron">▼</div>
+        </a>
+        <div class="piece-body">
+          <div class="piece-stats-row">
+            <div class="pstat"><div class="v">8</div><div class="l">DEF</div></div>
+            <div class="pstat"><div class="v">3</div><div class="l">REF</div></div>
+            <div class="pstat"><div class="v">Daze Immune</div><div class="l">SPEC</div></div>
+          </div>
+          <div class="steps">
+            <div class="step"><div class="sn">1</div><div>Currently requires defeating <strong style="color:var(--shadow)">Beloth the Darksworn</strong> in the House Lanford Faction Quest <strong style="color:#fff">"Wraith in the Frost"</strong> at Hoenmark Ruins.</div></div>
+            <div class="step"><div class="sn">2</div><div><strong style="color:var(--orange)">Warning:</strong> This boss is <strong>extremely overpowered</strong> for most players at this stage.</div></div>
+            <div class="step"><div class="sn">3</div><div>Alternative: Get the <strong style="color:var(--frost)">Frostcursed Plate Helm</strong> from Chattering Rocks instead — same slot, no boss fight, looks just as cool.</div></div>
+          </div>
+          <div class="tip-box">The Helm requires a very difficult boss. Get the <strong>Frostcursed Helm</strong> first for a similar look and no boss fight.</div>
+        </div>
+      </div>
+
+      <div class="piece-row" id="shadow-armor">
+        <a class="piece-toggle" href="#shadow-armor" onclick="event.preventDefault(); togglePiece(this)">
+          <div class="piece-emoji">🦺</div>
+          <div class="piece-info">
+            <div class="piece-slot">Chest</div>
+            <div class="piece-item-name">Plate Armor of the Shadows</div>
+            <div class="piece-loc">📍 Everfrost Watchtower, Argent Peaks — no boss</div>
+          </div>
+          <div class="expand-chevron">▼</div>
+        </a>
+        <div class="piece-body">
+          <div class="piece-stats-row">
+            <div class="pstat"><div class="v">10</div><div class="l">DEF</div></div>
+            <div class="pstat"><div class="v">3</div><div class="l">REF</div></div>
+            <div class="pstat"><div class="v">Petrify Immune</div><div class="l">SPEC</div></div>
+          </div>
+          <div class="steps">
+            <div class="step"><div class="sn">1</div><div>Head north of the <strong style="color:#fff">"H"</strong> and <strong style="color:#fff">Hoenmark Ruins</strong> to find the <strong style="color:var(--shadow)">Everfrost Watchtower</strong>.</div></div>
+            <div class="step"><div class="sn">2</div><div>In the south area, you'll find a <strong style="color:#fff">locked door in a rock wall</strong>.</div></div>
+            <div class="step"><div class="sn">3</div><div>Turn on the <strong style="color:var(--light)">lantern</strong> here by interacting with it to open the door.</div></div>
+            <div class="step"><div class="sn">4</div><div>Inside the Treasure Chest, you'll find the Plate Armor of the Shadows. <strong style="color:var(--orange)">Watch out for Bleed Bandits</strong> stationed here.</div></div>
+          </div>
+          <div class="tip-box"><strong>Best non-boss chest piece</strong> — 10 DEF with Petrification Immunity and 3 Abyss Gear slots. Worth prioritizing.</div>
+        </div>
+      </div>
+
+      <div class="piece-row" id="shadow-cloak">
+        <a class="piece-toggle" href="#shadow-cloak" onclick="event.preventDefault(); togglePiece(this)">
+          <div class="piece-emoji">🧥</div>
+          <div class="piece-info">
+            <div class="piece-slot">Back</div>
+            <div class="piece-item-name">Plate Cloak of the Shadows</div>
+            <div class="piece-loc">📍 Hoenmark Ruins — rooftop, blizzard zone</div>
+          </div>
+          <div class="expand-chevron">▼</div>
+        </a>
+        <div class="piece-body">
+          <div class="piece-stats-row">
+            <div class="pstat"><div class="v">3</div><div class="l">DEF</div></div>
+            <div class="pstat"><div class="v">3</div><div class="l">REF</div></div>
+            <div class="pstat"><div class="v">Fire Res Lv7</div><div class="l">SPEC</div></div>
+          </div>
+          <div class="steps">
+            <div class="step"><div class="sn">1</div><div>Hoenmark Ruins has a <strong style="color:var(--frost)">blizzard</strong> — you'll take damage. Bring plenty of food or wear Ice-Resistant armor.</div></div>
+            <div class="step"><div class="sn">2</div><div>Avoid <strong style="color:var(--orange)">flying enemies</strong> here — run straight to the location on the map, which is on a <strong style="color:#fff">rooftop to the left</strong> of Hoenmark Ruins.</div></div>
+            <div class="step"><div class="sn">3</div><div>On the floor is a <strong style="color:#fff">snowy brick pattern</strong>. Crouch, then use <strong style="color:var(--shadow)">Force Palm</strong> on the ground to flip the floor and drop into a secret room.</div></div>
+            <div class="step"><div class="sn">4</div><div>The Treasure Chest inside contains the Plate Cloak of the Shadows.</div></div>
+          </div>
+          <div class="tip-box">Bring <strong>Ice Resistance</strong> gear or lots of food. The blizzard deals continuous damage if you're undergeared.</div>
+        </div>
+      </div>
+
+      <div class="piece-row" id="shadow-gloves">
+        <a class="piece-toggle" href="#shadow-gloves" onclick="event.preventDefault(); togglePiece(this)">
+          <div class="piece-emoji">🧤</div>
+          <div class="piece-info">
+            <div class="piece-slot">Hands</div>
+            <div class="piece-item-name">Plate Gloves of the Shadows</div>
+            <div class="piece-loc">📍 Everfrost Cave, far east Hernand</div>
+          </div>
+          <div class="expand-chevron">▼</div>
+        </a>
+        <div class="piece-body">
+          <div class="piece-stats-row">
+            <div class="pstat"><div class="v">3</div><div class="l">DEF</div></div>
+            <div class="pstat"><div class="v">3</div><div class="l">REF</div></div>
+            <div class="pstat"><div class="v">Climb +2%</div><div class="l">SPEC</div></div>
+          </div>
+          <div class="steps">
+            <div class="step"><div class="sn">1</div><div>Follow the river underneath <strong style="color:#fff">"Hernand"</strong> on the map, then take a <strong style="color:#fff">left up the rocky mountains</strong>.</div></div>
+            <div class="step"><div class="sn">2</div><div>There's an <strong style="color:#fff">entrance in the wall</strong> (marked on the map) that can be entered.</div></div>
+            <div class="step"><div class="sn">3</div><div>Inside, you'll find the Plate Gloves of the Shadows in a Treasure Chest.</div></div>
+          </div>
+          <div class="tip-box">Can be combined with the <strong>Everfrost Watchtower</strong> armor run for an efficient two-chest route.</div>
+        </div>
+      </div>
+
+      <div class="piece-row" id="shadow-boots">
+        <a class="piece-toggle" href="#shadow-boots" onclick="event.preventDefault(); togglePiece(this)">
+          <div class="piece-emoji">👢</div>
+          <div class="piece-info">
+            <div class="piece-slot">Feet</div>
+            <div class="piece-item-name">Plate Boots of the Shadows</div>
+            <div class="piece-loc">📍 Frostclaw Cave, southwest river under Hernand</div>
+          </div>
+          <div class="expand-chevron">▼</div>
+        </a>
+        <div class="piece-body">
+          <div class="piece-stats-row">
+            <div class="pstat"><div class="v">7</div><div class="l">DEF</div></div>
+            <div class="pstat"><div class="v">3</div><div class="l">REF</div></div>
+            <div class="pstat"><div class="v">+10% Skill EXP</div><div class="l">SPEC</div></div>
+          </div>
+          <div class="steps">
+            <div class="step"><div class="sn">1</div><div>Follow the river to the <strong style="color:#fff">west underneath "Hernand"</strong> on the map.</div></div>
+            <div class="step"><div class="sn">2</div><div>At the location, you'll find a <strong style="color:var(--frost)">waterfall</strong>.</div></div>
+            <div class="step"><div class="sn">3</div><div>Stand at the waterfall and use <strong style="color:var(--shadow)">Stab (R1+Triangle)</strong> to enter inside, where you'll find the Treasure Chest.</div></div>
+          </div>
+          <div class="tip-box"><strong>+10% Skill EXP</strong> is one of the most valuable stat bonuses in the game. Great for speedrunners and build-focused players.</div>
+        </div>
+      </div>
+
+    </div>
+    <div class="full-set-bonus">
+      <div class="bonus-label">🌑 Full Set Bonus (5/5)</div>
+      <div class="bonus-text">Shadow Shroud + Backstab Critical ×3</div>
+      <div class="bonus-desc">Extreme stealth in darkness. Triple backstab critical damage. Best assassin and shadow-mage build in the game.</div>
+    </div>
+  </div>
+
+  <!-- ════════════════════
+       DARK MARKSMAN SET
+  ════════════════════ -->
+  <div class="set-category" id="darkmarksman">
+    <div class="set-header">
+      <div class="set-icon fire">🏹</div>
+      <div class="set-title-group">
+        <div class="set-name">Dark Marksman Armor</div>
+        <div class="set-meta">Fire Resistance · Worn by Samara the Sandwatcher <span class="region-tag">Demeniss</span></div>
+      </div>
+    </div>
+    <div class="piece-list">
+
+      <div class="piece-row" id="dm-armor">
+        <a class="piece-toggle" href="#dm-armor" onclick="event.preventDefault(); togglePiece(this)">
+          <div class="piece-emoji">🦺</div>
+          <div class="piece-info">
+            <div class="piece-slot">Chest</div>
+            <div class="piece-item-name">Dark Marksman's Plate Armor</div>
+            <div class="piece-loc">📍 Fort Musket, north Demeniss</div>
+          </div>
+          <div class="expand-chevron">▼</div>
+        </a>
+        <div class="piece-body">
+          <div class="piece-stats-row">
+            <div class="pstat"><div class="v">10</div><div class="l">DEF</div></div>
+            <div class="pstat"><div class="v">3</div><div class="l">REF</div></div>
+            <div class="pstat"><div class="v">+0.2 HP/s</div><div class="l">SPEC</div></div>
+          </div>
+          <div class="steps">
+            <div class="step"><div class="sn">1</div><div>Head to <strong style="color:var(--fire)">Fort Musket</strong>, north of Demeniss by the Valley of the Moon.</div></div>
+            <div class="step"><div class="sn">2</div><div>Head to the <strong style="color:#fff">back of Fort Musket</strong>, where you'll find a wall by some wooden scaffolding.</div></div>
+            <div class="step"><div class="sn">3</div><div>There's a <strong style="color:#fff">gap in the wall</strong> that looks like a small door. <strong>Crouch</strong> through the wooden panel to find the Treasure Chest.</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="piece-row" id="dm-cloak">
+        <a class="piece-toggle" href="#dm-cloak" onclick="event.preventDefault(); togglePiece(this)">
+          <div class="piece-emoji">🧥</div>
+          <div class="piece-info">
+            <div class="piece-slot">Back</div>
+            <div class="piece-item-name">Dark Marksman's Plate Cloak</div>
+            <div class="piece-loc">📍 Warrior's Soul Cavern, Drywind Valley</div>
+          </div>
+          <div class="expand-chevron">▼</div>
+        </a>
+        <div class="piece-body">
+          <div class="piece-stats-row">
+            <div class="pstat"><div class="v">3</div><div class="l">DEF</div></div>
+            <div class="pstat"><div class="v">3</div><div class="l">REF</div></div>
+            <div class="pstat"><div class="v">Fire Res Lv3</div><div class="l">SPEC</div></div>
+          </div>
+          <div class="steps">
+            <div class="step"><div class="sn">1</div><div>Find the waterfall at the river <strong style="color:#fff">north of Drywind Valley</strong>, northeast of Demeniss.</div></div>
+            <div class="step"><div class="sn">2</div><div>Stand on a rock at the <strong style="color:#fff">bottom of the waterfall</strong> and use <strong style="color:var(--fire)">Stab (R1+Triangle)</strong> to enter.</div></div>
+            <div class="step"><div class="sn">3</div><div>You'll emerge in <strong style="color:var(--fire)">Warrior's Soul Cavern</strong> — the Treasure Chest inside contains the cloak.</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="piece-row" id="dm-gloves">
+        <a class="piece-toggle" href="#dm-gloves" onclick="event.preventDefault(); togglePiece(this)">
+          <div class="piece-emoji">🧤</div>
+          <div class="piece-info">
+            <div class="piece-slot">Hands</div>
+            <div class="piece-item-name">Dark Marksman's Plate Gloves</div>
+            <div class="piece-loc">📍 Forgotten Watchtower, east Demeniss</div>
+          </div>
+          <div class="expand-chevron">▼</div>
+        </a>
+        <div class="piece-body">
+          <div class="piece-stats-row">
+            <div class="pstat"><div class="v">7</div><div class="l">DEF</div></div>
+            <div class="pstat"><div class="v">3</div><div class="l">REF</div></div>
+            <div class="pstat"><div class="v">Move Spd +1</div><div class="l">SPEC</div></div>
+          </div>
+          <div class="steps">
+            <div class="step"><div class="sn">1</div><div>Go to the <strong style="color:var(--fire)">Forgotten Watchtower</strong>, east of Demeniss.</div></div>
+            <div class="step"><div class="sn">2</div><div>When facing the entrance, <strong style="color:#fff">climb to the roof</strong>.</div></div>
+            <div class="step"><div class="sn">3</div><div>Look down at the ground and find a <strong style="color:#fff">square marked with rocks</strong>. Crouch (<strong style="color:#fff">L3</strong>) and <strong style="color:var(--fire)">Force Palm (R3)</strong> the ground to flip the floor and find the Treasure Chest.</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="piece-row" id="dm-boots">
+        <a class="piece-toggle" href="#dm-boots" onclick="event.preventDefault(); togglePiece(this)">
+          <div class="piece-emoji">👢</div>
+          <div class="piece-info">
+            <div class="piece-slot">Feet</div>
+            <div class="piece-item-name">Dark Marksman's Plate Boots</div>
+            <div class="piece-loc">📍 Flooded Watchtower's Depths, Forgotten Watchtower</div>
+          </div>
+          <div class="expand-chevron">▼</div>
+        </a>
+        <div class="piece-body">
+          <div class="piece-stats-row">
+            <div class="pstat"><div class="v">3</div><div class="l">DEF</div></div>
+            <div class="pstat"><div class="v">3</div><div class="l">REF</div></div>
+            <div class="pstat"><div class="v">Move Spd +1</div><div class="l">SPEC</div></div>
+          </div>
+          <div class="steps">
+            <div class="step"><div class="sn">1</div><div>At the <strong style="color:var(--fire)">Forgotten Watchtower</strong>, find stairs that lead to a <strong style="color:#fff">dead end</strong>.</div></div>
+            <div class="step"><div class="sn">2</div><div>Face the <strong style="color:#fff">north wall</strong> and use <strong style="color:var(--fire)">Force Palm (R3)</strong> to flip the wall and enter a secret area.</div></div>
+            <div class="step"><div class="sn">3</div><div>The Treasure Chest in the secret area contains the Plate Boots of the Dark Marksman.</div></div>
+          </div>
+          <div class="tip-box">The <strong>Forgotten Watchtower</strong> has both gloves AND boots — do both in one visit for maximum efficiency.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ════════════════════
+       FALLEN KINGDOM SET
+  ════════════════════ -->
+  <div class="set-category" id="fallen">
+    <div class="set-header">
+      <div class="set-icon storm">⚡</div>
+      <div class="set-title-group">
+        <div class="set-name">Fallen Kingdom Armor Set</div>
+        <div class="set-meta">Lightning Resistance · Hernand <span class="region-tag">Hernand</span></div>
+      </div>
+    </div>
+    <div class="piece-list">
+
+      <div class="piece-row" id="fallen-helm">
+        <a class="piece-toggle" href="#fallen-helm" onclick="event.preventDefault(); togglePiece(this)">
+          <div class="piece-emoji">🪖</div>
+          <div class="piece-info">
+            <div class="piece-slot">Head</div>
+            <div class="piece-item-name">Leather Helm of the Fallen Kingdom</div>
+            <div class="piece-loc">📍 Sanctum of Benediction, south Hernand</div>
+          </div>
+          <div class="expand-chevron">▼</div>
+        </a>
+        <div class="piece-body">
+          <div class="piece-stats-row">
+            <div class="pstat"><div class="v">3</div><div class="l">DEF</div></div>
+            <div class="pstat"><div class="v">2</div><div class="l">REF</div></div>
+            <div class="pstat"><div class="v">Lightning Res</div><div class="l">SPEC</div></div>
+          </div>
+          <div class="steps">
+            <div class="step"><div class="sn">1</div><div>Location: <strong style="color:var(--lightning)">Sanctum of Benediction</strong>, south of the "E" in "Hernand" on the map.</div></div>
+            <div class="step"><div class="sn">2</div><div>From inside the Sanctum, face the <strong style="color:#fff">north wall with stairs</strong>.</div></div>
+            <div class="step"><div class="sn">3</div><div>There's an <strong style="color:var(--lightning)">unlit lantern</strong> by the stairs — interact with it to open a <strong style="color:#fff">secret door</strong> in the wall, which reveals the chest.</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="piece-row" id="fallen-armor">
+        <a class="piece-toggle" href="#fallen-armor" onclick="event.preventDefault(); togglePiece(this)">
+          <div class="piece-emoji">🦺</div>
+          <div class="piece-info">
+            <div class="piece-slot">Chest</div>
+            <div class="piece-item-name">Leather Armor of the Fallen Kingdom</div>
+            <div class="piece-loc">📍 Frozen Soul Cavern, Everfrost</div>
+          </div>
+          <div class="expand-chevron">▼</div>
+        </a>
+        <div class="piece-body">
+          <div class="piece-stats-row">
+            <div class="pstat"><div class="v">7</div><div class="l">DEF</div></div>
+            <div class="pstat"><div class="v">2</div><div class="l">REF</div></div>
+            <div class="pstat"><div class="v">Lightning Res</div><div class="l">SPEC</div></div>
+          </div>
+          <div class="steps">
+            <div class="step"><div class="sn">1</div><div>Location: <strong style="color:var(--lightning)">Frozen Soul Cavern, Everfrost</strong>, south between the "E" and "R" in "Hernand".</div></div>
+            <div class="step"><div class="sn">2</div><div>Continue heading <strong style="color:#fff">west of the river</strong> to find a waterfall.</div></div>
+            <div class="step"><div class="sn">3</div><div>Enter the waterfall with <strong style="color:var(--lightning)">R1+Triangle (Stab)</strong>. Inside the small cave, there's a Treasure Chest.</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="piece-row" id="fallen-cloak">
+        <a class="piece-toggle" href="#fallen-cloak" onclick="event.preventDefault(); togglePiece(this)">
+          <div class="piece-emoji">🧥</div>
+          <div class="piece-info">
+            <div class="piece-slot">Back</div>
+            <div class="piece-item-name">Leather Cloak of the Fallen Kingdom</div>
+            <div class="piece-loc">📍 Icemoor Castle Ruins, north Hernand</div>
+          </div>
+          <div class="expand-chevron">▼</div>
+        </a>
+        <div class="piece-body">
+          <div class="piece-stats-row">
+            <div class="pstat"><div class="v">1</div><div class="l">DEF</div></div>
+            <div class="pstat"><div class="v">1</div><div class="l">REF</div></div>
+            <div class="pstat"><div class="v">Lightning Res Lv3</div><div class="l">SPEC</div></div>
+          </div>
+          <div class="steps">
+            <div class="step"><div class="sn">1</div><div>Location: <strong style="color:var(--lightning)">Icemoor Castle Ruins</strong>, north between the "R" and first "N" in "Hernand".</div></div>
+            <div class="step"><div class="sn">2</div><div>Head north inside the ruins and go up the stairs, then take a <strong style="color:#fff">right across the bridge</strong> to the back of the castle.</div></div>
+            <div class="step"><div class="sn">3</div><div>There's a <strong style="color:#fff">hole in the wall with wooden planks</strong> blocking the way. <strong>Crouch (L3)</strong> and <strong style="color:var(--lightning)">Force Palm (R3)</strong> to find the Treasure Chest inside.</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="piece-row" id="fallen-gloves">
+        <a class="piece-toggle" href="#fallen-gloves" onclick="event.preventDefault(); togglePiece(this)">
+          <div class="piece-emoji">🧤</div>
+          <div class="piece-info">
+            <div class="piece-slot">Hands</div>
+            <div class="piece-item-name">Plate Gloves of the Fallen Kingdom</div>
+            <div class="piece-loc">📍 Starlight Storm Cavern, Everfrost</div>
+          </div>
+          <div class="expand-chevron">▼</div>
+        </a>
+        <div class="piece-body">
+          <div class="piece-stats-row">
+            <div class="pstat"><div class="v">7</div><div class="l">DEF</div></div>
+            <div class="pstat"><div class="v">4</div><div class="l">REF</div></div>
+            <div class="pstat"><div class="v">+Turning Slash</div><div class="l">SPEC</div></div>
+          </div>
+          <div class="steps">
+            <div class="step"><div class="sn">1</div><div>Location: <strong style="color:var(--lightning)">Starlight Storm Cavern</strong>, in Everfrost, south between the "N" and "A" in "Hernand".</div></div>
+            <div class="step"><div class="sn">2</div><div>Head upstream toward the <strong style="color:#fff">waterfall (west)</strong> and use <strong style="color:var(--lightning)">Stab (R1+Triangle)</strong> when facing the water to enter the cave.</div></div>
+            <div class="step"><div class="sn">3</div><div>The Gloves are in the Treasure Chest inside the small cave.</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="piece-row" id="fallen-boots">
+        <a class="piece-toggle" href="#fallen-boots" onclick="event.preventDefault(); togglePiece(this)">
+          <div class="piece-emoji">👢</div>
+          <div class="piece-info">
+            <div class="piece-slot">Feet</div>
+            <div class="piece-item-name">Plate Boots of the Fallen Kingdom</div>
+            <div class="piece-loc">📍 Nightstorm Cave, Haunted Hill</div>
+          </div>
+          <div class="expand-chevron">▼</div>
+        </a>
+        <div class="piece-body">
+          <div class="piece-stats-row">
+            <div class="pstat"><div class="v">5</div><div class="l">DEF</div></div>
+            <div class="pstat"><div class="v">1</div><div class="l">REF</div></div>
+            <div class="pstat"><div class="v">Stamina +2%</div><div class="l">SPEC</div></div>
+          </div>
+          <div class="steps">
+            <div class="step"><div class="sn">1</div><div>Location: <strong style="color:var(--lightning)">Nightstorm Cave</strong>, in Haunted Hill, just above the first "N" in "Hernand".</div></div>
+            <div class="step"><div class="sn">2</div><div>Follow the river to the <strong style="color:#fff">west</strong> to find a waterfall above the first "N" on the map.</div></div>
+            <div class="step"><div class="sn">3</div><div>At the edge of the waterfall, press <strong style="color:var(--lightning)">R1+Triangle to Stab</strong> and enter, where you'll find the Treasure Chest.</div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ════════════════════
+       SCORCHFLAME KNIGHT SET
+  ════════════════════ -->
+  <div class="set-category" id="scorchflame">
+    <div class="set-header">
+      <div class="set-icon fire">🔥</div>
+      <div class="set-title-group">
+        <div class="set-name">Scorchflame Knight Armor Set</div>
+        <div class="set-meta">Fire Resistance + Fire Damage · Demeniss <span class="region-tag">Demeniss</span></div>
+      </div>
+    </div>
+    <div class="piece-list">
+
+      <div class="piece-row" id="scorch-helm">
+        <a class="piece-toggle" href="#scorch-helm" onclick="event.preventDefault(); togglePiece(this)">
+          <div class="piece-emoji">🪖</div>
+          <div class="piece-info">
+            <div class="piece-slot">Head</div>
+            <div class="piece-item-name">Scorchflame Plate Helm</div>
+            <div class="piece-loc">📍 Stonewell Farm tower, northwest Demeniss</div>
+          </div>
+          <div class="expand-chevron">▼</div>
+        </a>
+        <div class="piece-body">
+          <div class="piece-stats-row">
+            <div class="pstat"><div class="v">4</div><div class="l">DEF</div></div>
+            <div class="pstat"><div class="v">2</div><div class="l">REF</div></div>
+            <div class="pstat"><div class="v">Fire Res Lv1</div><div class="l">SPEC</div></div>
+          </div>
+          <div class="steps">
+            <div class="step"><div class="sn">1</div><div>Head to <strong style="color:var(--fire)">Stonewell Farm</strong>, northwest of the "D" in "Demeniss". Find the <strong style="color:#fff">tallest tower in the south</strong> of the farm.</div></div>
+            <div class="step"><div class="sn">2</div><div>Climb up top and open the door to find a <strong style="color:#fff">Treasure Chest in the middle</strong> of the room.</div></div>
+            <div class="step"><div class="sn">3</div><div>The chest needs to be opened from the <strong style="color:#fff">side because of the hole in the middle</strong> of the floor.</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="piece-row" id="scorch-armor">
+        <a class="piece-toggle" href="#scorch-armor" onclick="event.preventDefault(); togglePiece(this)">
+          <div class="piece-emoji">🦺</div>
+          <div class="piece-info">
+            <div class="piece-slot">Chest</div>
+            <div class="piece-item-name">Scorchflame Plate Armor</div>
+            <div class="piece-loc">📍 Golden Trading Post, west Demeniss</div>
+          </div>
+          <div class="expand-chevron">▼</div>
+        </a>
+        <div class="piece-body">
+          <div class="piece-stats-row">
+            <div class="pstat"><div class="v">14</div><div class="l">DEF</div></div>
+            <div class="pstat"><div class="v">CRIT Lv2</div><div class="l">SPEC</div></div>
+            <div class="pstat"><div class="v">Fire Res Lv7</div><div class="l">SPEC</div></div>
+          </div>
+          <div class="steps">
+            <div class="step"><div class="sn">1</div><div>Head to the <strong style="color:var(--fire)">Golden Trading Post</strong>, facing <strong style="color:#fff">west</strong>, between the "D" and "E" of "Demeniss".</div></div>
+            <div class="step"><div class="sn">2</div><div>Between two <strong style="color:#fff">wooden staircases</strong>, you'll find a <strong style="color:#fff">wooden door</strong> that you can access via sliding/crouching.</div></div>
+            <div class="step"><div class="sn">3</div><div>Go through to find the Treasure Chest with the Scorchflame Plate Armor inside.</div></div>
+          </div>
+          <div class="tip-box"><strong>Highest DEF in the set</strong> (14 DEF) + Critical Rate Lv2 + Fire Resistance Lv7. <strong>Cannot be upgraded</strong> and has no Abyss Gear slots.</div>
+        </div>
+      </div>
+
+      <div class="piece-row" id="scorch-cloak">
+        <a class="piece-toggle" href="#scorch-cloak" onclick="event.preventDefault(); togglePiece(this)">
+          <div class="piece-emoji">🧥</div>
+          <div class="piece-info">
+            <div class="piece-slot">Back</div>
+            <div class="piece-item-name">Scorchflame Plate Cloak</div>
+            <div class="piece-loc">📍 Silent Falls Hideout, west Demeniss</div>
+          </div>
+          <div class="expand-chevron">▼</div>
+        </a>
+        <div class="piece-body">
+          <div class="piece-stats-row">
+            <div class="pstat"><div class="v">2</div><div class="l">DEF</div></div>
+            <div class="pstat"><div class="v">2</div><div class="l">REF</div></div>
+            <div class="pstat"><div class="v">Fire Res Lv3</div><div class="l">SPEC</div></div>
+          </div>
+          <div class="steps">
+            <div class="step"><div class="sn">1</div><div>To the <strong style="color:#fff">right of the Twilight Grotto</strong>, you'll find a cave entrance that leads to the <strong style="color:var(--fire)">Silent Falls Hideout</strong>.</div></div>
+            <div class="step"><div class="sn">2</div><div>Face the <strong style="color:#fff">east wall</strong> and look up — you can climb it.</div></div>
+            <div class="step"><div class="sn">3</div><div><strong>Cling (L2)</strong> and <strong style="color:var(--fire)">Force Palm (R3)</strong> to enter a secret room containing the Treasure Chest.</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="piece-row" id="scorch-gloves">
+        <a class="piece-toggle" href="#scorch-gloves" onclick="event.preventDefault(); togglePiece(this)">
+          <div class="piece-emoji">🧤</div>
+          <div class="piece-info">
+            <div class="piece-slot">Hands</div>
+            <div class="piece-item-name">Scorchflame Plate Gloves</div>
+            <div class="piece-loc">📍 Silent Falls Hideout, west Demeniss</div>
+          </div>
+          <div class="expand-chevron">▼</div>
+        </a>
+        <div class="piece-body">
+          <div class="piece-stats-row">
+            <div class="pstat"><div class="v">5</div><div class="l">DEF</div></div>
+            <div class="pstat"><div class="v">3</div><div class="l">REF</div></div>
+            <div class="pstat"><div class="v">Fire Res Lv3</div><div class="l">SPEC</div></div>
+          </div>
+          <div class="steps">
+            <div class="step"><div class="sn">1</div><div>Same area as the Cloak — <strong style="color:var(--fire)">Silent Falls Hideout</strong>, accessed to the right of Twilight Grotto.</div></div>
+            <div class="step"><div class="sn">2</div><div>After entering the main cave, find the <strong style="color:#fff">breakable wall</strong> inside — use Force Palm to smash through.</div></div>
+            <div class="step"><div class="sn">3</div><div>The Treasure Chest with Scorchflame Plate Gloves is on the other side.</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="piece-row" id="scorch-boots">
+        <a class="piece-toggle" href="#scorch-boots" onclick="event.preventDefault(); togglePiece(this)">
+          <div class="piece-emoji">👢</div>
+          <div class="piece-info">
+            <div class="piece-slot">Feet</div>
+            <div class="piece-item-name">Scorchflame Plate Boots</div>
+            <div class="piece-loc">📍 Mistshard Cave, Smoking Lands</div>
+          </div>
+          <div class="expand-chevron">▼</div>
+        </a>
+        <div class="piece-body">
+          <div class="piece-stats-row">
+            <div class="pstat"><div class="v">5</div><div class="l">DEF</div></div>
+            <div class="pstat"><div class="v">2</div><div class="l">REF</div></div>
+            <div class="pstat"><div class="v">Fire Res Lv3</div><div class="l">SPEC</div></div>
+          </div>
+          <div class="steps">
+            <div class="step"><div class="sn">1</div><div>Same location as the <strong style="color:var(--frost)">Frostcursed Plate Armor</strong> — <strong style="color:var(--fire)">Mistshard Cave</strong>, Smoking Lands, north of Deadfire Mountain.</div></div>
+            <div class="step"><div class="sn">2</div><div>Enter through the upper right bank waterfall. Use <strong style="color:var(--fire)">Mine or Force Palm</strong> on the center wall to reveal the golden passage.</div></div>
+            <div class="step"><div class="sn">3</div><div>Inside the cave, the Scorchflame Plate Boots chest is in a <strong style="color:#fff">separate area</strong> from the Frostcursed Armor. Explore the lower passages.</div></div>
+          </div>
+          <div class="tip-box">Can be combined with the <strong>Frostcursed Armor</strong> run since they're in the same cave — do both sets at once!</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ════════════════════
+       CURSED SOUL SET
+  ════════════════════ -->
+  <div class="set-category" id="cursed">
+    <div class="set-header">
+      <div class="set-icon cursed">💀</div>
+      <div class="set-title-group">
+        <div class="set-name">Cursed Soul Armor Set</div>
+        <div class="set-meta">Mixed Defense + Utility · South Demeniss <span class="region-tag">South Demeniss</span></div>
+      </div>
+    </div>
+    <div class="piece-list">
+
+      <div class="piece-row" id="cursed-helm">
+        <a class="piece-toggle" href="#cursed-helm" onclick="event.preventDefault(); togglePiece(this)">
+          <div class="piece-emoji">🪖</div>
+          <div class="piece-info">
+            <div class="piece-slot">Head</div>
+            <div class="piece-item-name">Plate Helm of Cursed Soul</div>
+            <div class="piece-loc">📍 Windrift Cave, Steel Mountains, far south Demeniss</div>
+          </div>
+          <div class="expand-chevron">▼</div>
+        </a>
+        <div class="piece-body">
+          <div class="piece-stats-row">
+            <div class="pstat"><div class="v">8</div><div class="l">DEF</div></div>
+            <div class="pstat"><div class="v">3</div><div class="l">REF</div></div>
+            <div class="pstat"><div class="v">Daze Immune</div><div class="l">SPEC</div></div>
+          </div>
+          <div class="steps">
+            <div class="step"><div class="sn">1</div><div>Head to the <strong style="color:var(--red)">Steel Mountains</strong> in the far south of Demeniss, specifically the <strong style="color:#fff">Wells Estate Thornbriar Mountains</strong>.</div></div>
+            <div class="step"><div class="sn">2</div><div>Find the entrance to <strong style="color:var(--red)">Windrift Cave</strong> — it's east of the Steel Mountains.</div></div>
+            <div class="step"><div class="sn">3</div><div>The Plate Helm of Cursed Soul is inside the cave. Watch for tough enemies guarding the entrance.</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="piece-row" id="cursed-armor">
+        <a class="piece-toggle" href="#cursed-armor" onclick="event.preventDefault(); togglePiece(this)">
+          <div class="piece-emoji">🦺</div>
+          <div class="piece-info">
+            <div class="piece-slot">Chest</div>
+            <div class="piece-item-name">Plate Armor of Cursed Soul</div>
+            <div class="piece-loc">📍 Riverbed Terrace, south Demeniss</div>
+          </div>
+          <div class="expand-chevron">▼</div>
+        </a>
+        <div class="piece-body">
+          <div class="piece-stats-row">
+            <div class="pstat"><div class="v">8</div><div class="l">DEF</div></div>
+            <div class="pstat"><div class="v">2</div><div class="l">REF</div></div>
+            <div class="pstat"><div class="v">Move Spd +1</div><div class="l">SPEC</div></div>
+          </div>
+          <div class="steps">
+            <div class="step"><div class="sn">1</div><div>Head south of the "D" in "Demeniss" to find the <strong style="color:var(--red)">Riverbed Terrace</strong> — an area with plenty of graves and tombstones.</div></div>
+            <div class="step"><div class="sn">2</div><div>Look for a <strong style="color:#fff">flipped tomb</strong> in the area — this is the entrance to the secret chest location.</div></div>
+            <div class="step"><div class="sn">3</div><div>Open the Treasure Chest inside the flipped tomb to get the Plate Armor of Cursed Soul.</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="piece-row" id="cursed-cloak">
+        <a class="piece-toggle" href="#cursed-cloak" onclick="event.preventDefault(); togglePiece(this)">
+          <div class="piece-emoji">🧥</div>
+          <div class="piece-info">
+            <div class="piece-slot">Back</div>
+            <div class="piece-item-name">Plate Cloak of Cursed Soul</div>
+            <div class="piece-loc">📍 Anvil Riverside Terrace, south Demeniss</div>
+          </div>
+          <div class="expand-chevron">▼</div>
+        </a>
+        <div class="piece-body">
+          <div class="piece-stats-row">
+            <div class="pstat"><div class="v">2</div><div class="l">DEF</div></div>
+            <div class="pstat"><div class="v">2</div><div class="l">REF</div></div>
+            <div class="pstat"><div class="v">Fire Res Lv3</div><div class="l">SPEC</div></div>
+          </div>
+          <div class="steps">
+            <div class="step"><div class="sn">1</div><div>Head south of the "D" in "Demeniss" to find the <strong style="color:var(--red)">Anvil Riverside Terrace</strong> — a ruined area.</div></div>
+            <div class="step"><div class="sn">2</div><div>Look for a <strong style="color:#fff">flipped wall</strong> inside — use <strong style="color:var(--red)">Force Palm</strong> to reveal the chest.</div></div>
+            <div class="step"><div class="sn">3</div><div><strong style="color:var(--orange)">Warning:</strong> Plenty of <strong>Bandits</strong> in this area — kill them to liberate the area and avoid getting ambushed while looting.</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="piece-row" id="cursed-gloves">
+        <a class="piece-toggle" href="#cursed-gloves" onclick="event.preventDefault(); togglePiece(this)">
+          <div class="piece-emoji">🧤</div>
+          <div class="piece-info">
+            <div class="piece-slot">Hands</div>
+            <div class="piece-item-name">Plate Gloves of Cursed Soul</div>
+            <div class="piece-loc">📍 Anvil Hill Gust Cave, west Demeniss</div>
+          </div>
+          <div class="expand-chevron">▼</div>
+        </a>
+        <div class="piece-body">
+          <div class="piece-stats-row">
+            <div class="pstat"><div class="v">7</div><div class="l">DEF</div></div>
+            <div class="pstat"><div class="v">2</div><div class="l">REF</div></div>
+            <div class="pstat"><div class="v">Fire Res Lv1</div><div class="l">SPEC</div></div>
+          </div>
+          <div class="steps">
+            <div class="step"><div class="sn">1</div><div>Head west of the "D" in "Demeniss" — into the <strong style="color:var(--red)">Reventine Monastery Region</strong>.</div></div>
+            <div class="step"><div class="sn">2</div><div>Find the <strong style="color:#fff">cliff wall covered in strange metal</strong> when facing east.</div></div>
+            <div class="step"><div class="sn">3</div><div>Use <strong style="color:var(--red)">Force Palm</strong> on the wall to reveal the entrance to <strong style="color:var(--red)">Anvil Hill Gust Cave</strong>. The chest is inside.</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="piece-row" id="cursed-boots">
+        <a class="piece-toggle" href="#cursed-boots" onclick="event.preventDefault(); togglePiece(this)">
+          <div class="piece-emoji">👢</div>
+          <div class="piece-info">
+            <div class="piece-slot">Feet</div>
+            <div class="piece-item-name">Plate Boots of Cursed Soul</div>
+            <div class="piece-loc">📍 Shadowwolf Cave, Lower Nas River, south Demeniss</div>
+          </div>
+          <div class="expand-chevron">▼</div>
+        </a>
+        <div class="piece-body">
+          <div class="piece-stats-row">
+            <div class="pstat"><div class="v">5</div><div class="l">DEF</div></div>
+            <div class="pstat"><div class="v">2</div><div class="l">REF</div></div>
+            <div class="pstat"><div class="v">Move Spd +1</div><div class="l">SPEC</div></div>
+          </div>
+          <div class="steps">
+            <div class="step"><div class="sn">1</div><div>Head south of the "D" in "Demeniss" and find the <strong style="color:var(--red)">Lower Nas River waterfall</strong>, which splits into two.</div></div>
+            <div class="step"><div class="sn">2</div><div>The entrance to <strong style="color:var(--red)">Shadowwolf Cave</strong> is inside the waterfall.</div></div>
+            <div class="step"><div class="sn">3</div><div>Use <strong style="color:var(--red)">Stab (R1+Triangle)</strong> to enter the waterfall and find the Treasure Chest with the Plate Boots of Cursed Soul.</div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ════════════════════
+       EXECUTIONER OF DARKNESS SET
+  ════════════════════ -->
+  <div class="set-category" id="executioner">
+    <div class="set-header">
+      <div class="set-icon dark">⚔️</div>
+      <div class="set-title-group">
+        <div class="set-name">Executioner of Darkness (Damiane's Set)</div>
+        <div class="set-meta">Multi-Region · Hernand / Delesyia / Gorthak <span class="region-tag">Multi-Region</span></div>
+      </div>
+    </div>
+    <div class="piece-list">
+
+      <div class="piece-row" id="exec-cloak">
+        <a class="piece-toggle" href="#exec-cloak" onclick="event.preventDefault(); togglePiece(this)">
+          <div class="piece-emoji">🧥</div>
+          <div class="piece-info">
+            <div class="piece-slot">Back</div>
+            <div class="piece-item-name">Executioner of Darkness Plate Cloak</div>
+            <div class="piece-loc">📍 Southeastern Hernand / southwestern Delesyia</div>
+          </div>
+          <div class="expand-chevron">▼</div>
+        </a>
+        <div class="piece-body">
+          <div class="piece-stats-row">
+            <div class="pstat"><div class="v">—</div><div class="l">DEF</div></div>
+            <div class="pstat"><div class="v">Dark Dmg</div><div class="l">SPEC</div></div>
+            <div class="pstat"><div class="v">Shadow Res</div><div class="l">SPEC</div></div>
+          </div>
+          <div class="steps">
+            <div class="step"><div class="sn">1</div><div>Every part of this armor set can be looted inside <strong style="color:#fff">chests along southeastern Hernand</strong>, southwestern Delesyia, and eastern Gorthak.</div></div>
+            <div class="step"><div class="sn">2</div><div>For the Cloak specifically: head to the <strong style="color:var(--purple)">map marker in southeastern Hernand</strong> — it's on a rooftop ledge.</div></div>
+            <div class="step"><div class="sn">3</div><div>Look for the <strong style="color:#fff">snowy brick floor pattern</strong>, crouch, and use <strong style="color:var(--purple)">Force Palm</strong> to drop into the secret room below.</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="piece-row" id="exec-boots">
+        <a class="piece-toggle" href="#exec-boots" onclick="event.preventDefault(); togglePiece(this)">
+          <div class="piece-emoji">👢</div>
+          <div class="piece-info">
+            <div class="piece-slot">Feet</div>
+            <div class="piece-item-name">Executioner of Darkness Plate Boots</div>
+            <div class="piece-loc">📍 Southwestern Delesyia</div>
+          </div>
+          <div class="expand-chevron">▼</div>
+        </a>
+        <div class="piece-body">
+          <div class="piece-stats-row">
+            <div class="pstat"><div class="v">—</div><div class="l">DEF</div></div>
+            <div class="pstat"><div class="v">Dark Dmg</div><div class="l">SPEC</div></div>
+            <div class="pstat"><div class="v">Shadow Res</div><div class="l">SPEC</div></div>
+          </div>
+          <div class="steps">
+            <div class="step"><div class="sn">1</div><div>In southwestern Delesyia, head to the <strong style="color:var(--purple)">map marker</strong> near the border with Hernand.</div></div>
+            <div class="step"><div class="sn">2</div><div>Look for a <strong style="color:#fff">hidden cave entrance</strong> behind a rock formation — use Force Palm to break through.</div></div>
+            <div class="step"><div class="sn">3</div><div>The Treasure Chest inside contains the Plate Boots of Executioner of Darkness.</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="piece-row" id="exec-gloves">
+        <a class="piece-toggle" href="#exec-gloves" onclick="event.preventDefault(); togglePiece(this)">
+          <div class="piece-emoji">🧤</div>
+          <div class="piece-info">
+            <div class="piece-slot">Hands</div>
+            <div class="piece-item-name">Executioner of Darkness Plate Gloves</div>
+            <div class="piece-loc">📍 Eastern Gorthak</div>
+          </div>
+          <div class="expand-chevron">▼</div>
+        </a>
+        <div class="piece-body">
+          <div class="piece-stats-row">
+            <div class="pstat"><div class="v">—</div><div class="l">DEF</div></div>
+            <div class="pstat"><div class="v">Dark Dmg</div><div class="l">SPEC</div></div>
+            <div class="pstat"><div class="v">Shadow Res</div><div class="l">SPEC</div></div>
+          </div>
+          <div class="steps">
+            <div class="step"><div class="sn">1</div><div>In eastern Gorthak, navigate to the <strong style="color:var(--purple)">map marker location</strong>.</div></div>
+            <div class="step"><div class="sn">2</div><div>Find the <strong style="color:#fff">rock formation</strong> at the location — use <strong style="color:var(--purple)">Force Palm</strong> on the base of the rock to reveal a hidden alcove.</div></div>
+            <div class="step"><div class="sn">3</div><div>The Treasure Chest in the alcove contains the Plate Gloves of Executioner of Darkness.</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="piece-row" id="exec-helm">
+        <a class="piece-toggle" href="#exec-helm" onclick="event.preventDefault(); togglePiece(this)">
+          <div class="piece-emoji">🪖</div>
+          <div class="piece-info">
+            <div class="piece-slot">Head</div>
+            <div class="piece-item-name">Executioner of Darkness Plate Helm</div>
+            <div class="piece-loc">📍 Southwestern Delesyia</div>
+          </div>
+          <div class="expand-chevron">▼</div>
+        </a>
+        <div class="piece-body">
+          <div class="piece-stats-row">
+            <div class="pstat"><div class="v">—</div><div class="l">DEF</div></div>
+            <div class="pstat"><div class="v">Dark Dmg</div><div class="l">SPEC</div></div>
+            <div class="pstat"><div class="v">Shadow Res</div><div class="l">SPEC</div></div>
+          </div>
+          <div class="steps">
+            <div class="step"><div class="sn">1</div><div>Head to the <strong style="color:var(--purple)">map marker in southwestern Delesyia</strong> — look for a wall with a <strong style="color:#fff">secret entrance</strong>.</div></div>
+            <div class="step"><div class="sn">2</div><div>Use <strong style="color:var(--purple)">Force Palm</strong> on the wall to break through into a secret room.</div></div>
+            <div class="step"><div class="sn">3</div><div>The Treasure Chest inside contains the Plate Helm of Executioner of Darkness.</div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ════════════════════
+       ODECK'S PROTECTOR (SAMURAI) SET
+  ════════════════════ -->
+  <div class="set-category" id="samurai">
+    <div class="set-header">
+      <div class="set-icon samurai">🗡️</div>
+      <div class="set-title-group">
+        <div class="set-name">Odeck's Protector (Samurai Armor)</div>
+        <div class="set-meta">Mixed Defense · Pailune / Hernand <span class="region-tag">Multi-Region</span></div>
+      </div>
+    </div>
+    <div class="piece-list">
+
+      <div class="piece-row" id="sam-helm">
+        <a class="piece-toggle" href="#sam-helm" onclick="event.preventDefault(); togglePiece(this)">
+          <div class="piece-emoji">🪖</div>
+          <div class="piece-info">
+            <div class="piece-slot">Head</div>
+            <div class="piece-item-name">Odeck's Protector Plate Helm</div>
+            <div class="piece-loc">📍 Hexe Sanctuary, north Demeniss</div>
+          </div>
+          <div class="expand-chevron">▼</div>
+        </a>
+        <div class="piece-body">
+          <div class="piece-stats-row">
+            <div class="pstat"><div class="v">8</div><div class="l">DEF</div></div>
+            <div class="pstat"><div class="v">3</div><div class="l">REF</div></div>
+            <div class="pstat"><div class="v">Defense +3</div><div class="l">ABYSS</div></div>
+          </div>
+          <div class="steps">
+            <div class="step"><div class="sn">1</div><div>Head north of Demeniss to find a <strong style="color:#fff">cliff wall at the Hexe Sanctuary</strong> (facing north on the map).</div></div>
+            <div class="step"><div class="sn">2</div><div>You'll find a <strong style="color:#fff">metal wall hiding a cave entrance</strong>.</div></div>
+            <div class="step"><div class="sn">3</div><div>Destroy it with <strong style="color:var(--frost)">Focus Force Palm (L3+R3+R3)</strong> to reveal the chest with Odeck's Protector Plate Helm.</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="piece-row" id="sam-armor">
+        <a class="piece-toggle" href="#sam-armor" onclick="event.preventDefault(); togglePiece(this)">
+          <div class="piece-emoji">🦺</div>
+          <div class="piece-info">
+            <div class="piece-slot">Chest</div>
+            <div class="piece-item-name">Odeck's Protector Plate Armor</div>
+            <div class="piece-loc">📍 Wayward Woods, northwest of Pailune</div>
+          </div>
+          <div class="expand-chevron">▼</div>
+        </a>
+        <div class="piece-body">
+          <div class="piece-stats-row">
+            <div class="pstat"><div class="v">13</div><div class="l">DEF</div></div>
+            <div class="pstat"><div class="v">3</div><div class="l">REF</div></div>
+            <div class="pstat"><div class="v">Ice Res +1</div><div class="l">SPEC</div></div>
+          </div>
+          <div class="steps">
+            <div class="step"><div class="sn">1</div><div>Head <strong style="color:#fff">northwest of Pailune</strong> into the <strong style="color:var(--earth)">Wayward Woods</strong>.</div></div>
+            <div class="step"><div class="sn">2</div><div>Navigate through the forest to find the <strong style="color:#fff">Wayward Woods dungeon entrance</strong>.</div></div>
+            <div class="step"><div class="sn">3</div><div>Inside, look for the <strong style="color:#fff">breakable wall</strong> — use Force Palm to reveal the Treasure Chest with Odeck's Protector Plate Armor.</div></div>
+          </div>
+          <div class="tip-box"><strong>Highest DEF piece</strong> of the samurai set (13 DEF). Combined with the helm, gives excellent base protection in one run.</div>
+        </div>
+      </div>
+
+      <div class="piece-row" id="sam-cloak">
+        <a class="piece-toggle" href="#sam-cloak" onclick="event.preventDefault(); togglePiece(this)">
+          <div class="piece-emoji">🧥</div>
+          <div class="piece-info">
+            <div class="piece-slot">Back</div>
+            <div class="piece-item-name">Odeck's Protector Plate Cloak</div>
+            <div class="piece-loc">📍 South of Pailune, riverbank</div>
+          </div>
+          <div class="expand-chevron">▼</div>
+        </a>
+        <div class="piece-body">
+          <div class="piece-stats-row">
+            <div class="pstat"><div class="v">3</div><div class="l">DEF</div></div>
+            <div class="pstat"><div class="v">3</div><div class="l">REF</div></div>
+            <div class="pstat"><div class="v">Shadow Res</div><div class="l">SPEC</div></div>
+          </div>
+          <div class="steps">
+            <div class="step"><div class="sn">1</div><div>Head <strong style="color:#fff">south of Pailune</strong> and follow the riverbank.</div></div>
+            <div class="step"><div class="sn">2</div><div>Look for a <strong style="color:var(--red)">red wall</strong> along the cliff — that's your entrance.</div></div>
+            <div class="step"><div class="sn">3</div><div>Use <strong style="color:var(--earth)">Force Palm</strong> on the red wall to break through into the secret area. The Treasure Chest is inside.</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="piece-row" id="sam-gloves">
+        <a class="piece-toggle" href="#sam-gloves" onclick="event.preventDefault(); togglePiece(this)">
+          <div class="piece-emoji">🧤</div>
+          <div class="piece-info">
+            <div class="piece-slot">Hands</div>
+            <div class="piece-item-name">Odeck's Protector Plate Gloves</div>
+            <div class="piece-loc">📍 Perwin Quarry, south Hernand (Witchwoods)</div>
+          </div>
+          <div class="expand-chevron">▼</div>
+        </a>
+        <div class="piece-body">
+          <div class="piece-stats-row">
+            <div class="pstat"><div class="v">3</div><div class="l">DEF</div></div>
+            <div class="pstat"><div class="v">3</div><div class="l">REF</div></div>
+            <div class="pstat"><div class="v">+HP regen</div><div class="l">SPEC</div></div>
+          </div>
+          <div class="steps">
+            <div class="step"><div class="sn">1</div><div>Venture <strong style="color:#fff">south of Hernand</strong> into the <strong style="color:var(--earth)">Witchwoods</strong>.</div></div>
+            <div class="step"><div class="sn">2</div><div>Further south of the Witchwoods is the <strong style="color:var(--earth)">Perwin Quarry</strong>, where you'll find a <strong style="color:#fff">metal wall in the cliffside</strong>.</div></div>
+            <div class="step"><div class="sn">3</div><div>Use <strong style="color:var(--earth)">Force Palm</strong> on the metal wall to break through and access the Treasure Chest.</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="piece-row" id="sam-boots">
+        <a class="piece-toggle" href="#sam-boots" onclick="event.preventDefault(); togglePiece(this)">
+          <div class="piece-emoji">👢</div>
+          <div class="piece-info">
+            <div class="piece-slot">Feet</div>
+            <div class="piece-item-name">Odeck's Protector Plate Boots</div>
+            <div class="piece-loc">📍 Sanctum of Temperance, south Hernand</div>
+          </div>
+          <div class="expand-chevron">▼</div>
+        </a>
+        <div class="piece-body">
+          <div class="piece-stats-row">
+            <div class="pstat"><div class="v">5</div><div class="l">DEF</div></div>
+            <div class="pstat"><div class="v">3</div><div class="l">REF</div></div>
+            <div class="pstat"><div class="v">Move Spd +1</div><div class="l">SPEC</div></div>
+          </div>
+          <div class="steps">
+            <div class="step"><div class="sn">1</div><div>Head <strong style="color:#fff">south of Hernand</strong> to find the <strong style="color:var(--earth)">Sanctum of Temperance</strong>.</div></div>
+            <div class="step"><div class="sn">2</div><div>Solve the Sanctum puzzle — the puzzle solution is on the map marker.</div></div>
+            <div class="step"><div class="sn">3</div><div>After solving, the Treasure Chest containing Odeck's Protector Plate Boots is accessible inside the Sanctum.</div></div>
+          </div>
+          <div class="tip-box">The Sanctum of Temperance has a puzzle. Check our puzzle guide for the exact solution to avoid getting stuck.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ════════════════════
+       GOLDEN GREED SET
+  ════════════════════ -->
+  <div class="set-category" id="golden">
+    <div class="set-header">
+      <div class="set-icon gold">👑</div>
+      <div class="set-title-group">
+        <div class="set-name">Golden Greed Armor Set</div>
+        <div class="set-meta">Fire Resistance + Wealth Theme · Tashkalp <span class="region-tag">Tashkalp</span></div>
+      </div>
+    </div>
+    <div class="piece-list">
+
+      <div class="piece-row" id="golden-helm">
+        <a class="piece-toggle" href="#golden-helm" onclick="event.preventDefault(); togglePiece(this)">
+          <div class="piece-emoji">🪖</div>
+          <div class="piece-info">
+            <div class="piece-slot">Head</div>
+            <div class="piece-item-name">Golden Greed Plate Helm</div>
+            <div class="piece-loc">📍 Sanctum of Renunciation, Tashkalp</div>
+          </div>
+          <div class="expand-chevron">▼</div>
+        </a>
+        <div class="piece-body">
+          <div class="piece-stats-row">
+            <div class="pstat"><div class="v">7</div><div class="l">DEF</div></div>
+            <div class="pstat"><div class="v">4</div><div class="l">REF</div></div>
+            <div class="pstat"><div class="v">Daze Immune</div><div class="l">SPEC</div></div>
+          </div>
+          <div class="steps">
+            <div class="step"><div class="sn">1</div><div>Inside the <strong style="color:var(--gold)">Sanctum of Renunciation</strong>, Tashkalp (southeast Crimson Desert), look <strong style="color:#fff">southwest</strong>.</div></div>
+            <div class="step"><div class="sn">2</div><div>You'll find <strong style="color:var(--gold)">two unlit lanterns</strong> next to some stairs.</div></div>
+            <div class="step"><div class="sn">3</div><div><strong>Light both lanterns</strong> — a secret wall will open and reveal a Treasure Chest containing the Golden Greed Plate Helm.</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="piece-row" id="golden-armor">
+        <a class="piece-toggle" href="#golden-armor" onclick="event.preventDefault(); togglePiece(this)">
+          <div class="piece-emoji">🦺</div>
+          <div class="piece-info">
+            <div class="piece-slot">Chest</div>
+            <div class="piece-item-name">Golden Greed Plate Armor</div>
+            <div class="piece-loc">📍 Bursada Castle Ruins, Tashkalp</div>
+          </div>
+          <div class="expand-chevron">▼</div>
+        </a>
+        <div class="piece-body">
+          <div class="piece-stats-row">
+            <div class="pstat"><div class="v">14</div><div class="l">DEF</div></div>
+            <div class="pstat"><div class="v">4</div><div class="l">REF</div></div>
+            <div class="pstat"><div class="v">Move Spd +1</div><div class="l">SPEC</div></div>
+          </div>
+          <div class="steps">
+            <div class="step"><div class="sn">1</div><div>Find <strong style="color:var(--gold)">Bursada Castle Ruins</strong> in Tashkalp, southeast of Crimson Desert.</div></div>
+            <div class="step"><div class="sn">2</div><div>Head <strong style="color:#fff">north through the large door just before the stairs upwards</strong>, then take a <strong style="color:#fff">left</strong> to find a long corridor.</div></div>
+            <div class="step"><div class="sn">3</div><div>At the end of the corridor, use <strong style="color:var(--gold)">Force Palm (R3)</strong> to break open the wall and reveal the Treasure Chest with the Golden Greed Plate Armor.</div></div>
+          </div>
+          <div class="tip-box"><strong>14 DEF, Refinement 4</strong> — highest base defense and refinement in the set. Also has Movement Speed and HP bonuses. Exceptional chest piece.</div>
+        </div>
+      </div>
+
+      <div class="piece-row" id="golden-cloak">
+        <a class="piece-toggle" href="#golden-cloak" onclick="event.preventDefault(); togglePiece(this)">
+          <div class="piece-emoji">🧥</div>
+          <div class="piece-info">
+            <div class="piece-slot">Back</div>
+            <div class="piece-item-name">Golden Greed Plate Cloak</div>
+            <div class="piece-loc">📍 Venomblade Grotto, Red River, Tashkalp</div>
+          </div>
+          <div class="expand-chevron">▼</div>
+        </a>
+        <div class="piece-body">
+          <div class="piece-stats-row">
+            <div class="pstat"><div class="v">4</div><div class="l">DEF</div></div>
+            <div class="pstat"><div class="v">4</div><div class="l">REF</div></div>
+            <div class="pstat"><div class="v">Fire Res Lv3</div><div class="l">SPEC</div></div>
+          </div>
+          <div class="steps">
+            <div class="step"><div class="sn">1</div><div>Location: <strong style="color:var(--gold)">Venomblade Grotto</strong>, Red River, southeast of Crimson Desert.</div></div>
+            <div class="step"><div class="sn">2</div><div>Use <strong style="color:var(--gold)">Stab (R1+Triangle)</strong> to enter the waterfall.</div></div>
+            <div class="step"><div class="sn">3</div><div>The Treasure Chest inside the grotto contains the Golden Greed Plate Cloak.</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="piece-row" id="golden-gloves">
+        <a class="piece-toggle" href="#golden-gloves" onclick="event.preventDefault(); togglePiece(this)">
+          <div class="piece-emoji">🧤</div>
+          <div class="piece-info">
+            <div class="piece-slot">Hands</div>
+            <div class="piece-item-name">Golden Greed Plate Gloves</div>
+            <div class="piece-loc">📍 Tashkalp region — details pending</div>
+          </div>
+          <div class="expand-chevron">▼</div>
+        </a>
+        <div class="piece-body">
+          <div class="piece-stats-row">
+            <div class="pstat"><div class="v">—</div><div class="l">DEF</div></div>
+            <div class="pstat"><div class="v">4</div><div class="l">REF</div></div>
+            <div class="pstat"><div class="v">Fire Res Lv3</div><div class="l">SPEC</div></div>
+          </div>
+          <div class="tip-box">Gloves location data still being compiled. Full walkthrough coming soon — check back for the exact route and puzzle solution.</div>
+        </div>
+      </div>
+
+      <div class="piece-row" id="golden-boots">
+        <a class="piece-toggle" href="#golden-boots" onclick="event.preventDefault(); togglePiece(this)">
+          <div class="piece-emoji">👢</div>
+          <div class="piece-info">
+            <div class="piece-slot">Feet</div>
+            <div class="piece-item-name">Golden Greed Plate Boots</div>
+            <div class="piece-loc">📍 Tashkalp region — details pending</div>
+          </div>
+          <div class="expand-chevron">▼</div>
+        </a>
+        <div class="piece-body">
+          <div class="piece-stats-row">
+            <div class="pstat"><div class="v">—</div><div class="l">DEF</div></div>
+            <div class="pstat"><div class="v">4</div><div class="l">REF</div></div>
+            <div class="pstat"><div class="v">Gold Gain +</div><div class="l">SPEC</div></div>
+          </div>
+          <div class="tip-box">Boots location data still being compiled. Full walkthrough coming soon — check back for the exact route and puzzle solution.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- ══════════════════════════════════════════════
+     WEAPONS TAB
+══════════════════════════════════════════════ -->
+<div class="tab-content" id="tab-weapons">
+
+  <div class="section-intro">Legendary and unique weapons — with locations, stats, and Abyss Gear breakdowns.</div>
+
+  <div class="section-label">⚔️ Legendary Swords</div>
+  <div class="weapon-grid">
+
+    <div class="weapon-card">
+      <div class="weapon-icon">🗡️</div>
+      <div class="weapon-type">One-Handed Sword</div>
+      <div class="weapon-name">Fated Shadow</div>
+      <div class="weapon-desc">The Greymanes' legendary sword for Kliff. Secret OP sword — widely considered the best sword in the game.</div>
+      <div class="weapon-stat">⚔️ Secret / Quest-locked</div>
+      <div class="weapon-tag">🌑 Shadow Damage</div>
+    </div>
+
+    <div class="weapon-card">
+      <div class="weapon-icon">🗡️</div>
+      <div class="weapon-type">One-Handed Sword</div>
+      <div class="weapon-name">Red Rage</div>
+      <div class="weapon-desc">High crit rate sword. At full upgrade: 31 Attack, Critical Rate Lv 4. Always deals double damage with crit build.</div>
+      <div class="weapon-stat">ATK 7 → 31 (max)</div>
+      <div class="weapon-stat">CRIT Lv 3 → Lv 4</div>
+      <div class="weapon-tag">🔥 Fire Damage</div>
+    </div>
+
+    <div class="weapon-card">
+      <div class="weapon-icon">🗡️</div>
+      <div class="weapon-type">One-Handed Sword</div>
+      <div class="weapon-name">Fallen Kingdom Rapier</div>
+      <div class="weapon-desc">Found at Icemoor Castle Ruins. Solid early-to-mid game choice with good refinement potential.</div>
+      <div class="weapon-stat">📍 Icemoor Castle Ruins</div>
+      <div class="weapon-tag">⚡ Lightning Damage</div>
+    </div>
+
+    <div class="weapon-card">
+      <div class="weapon-icon">🗡️</div>
+      <div class="weapon-type">Two-Handed Sword</div>
+      <div class="weapon-name">Darkbringer</div>
+      <div class="weapon-desc">Unique 2H sword northwest of Silver Wolf Mountain. Ator's Orb fires golden orbs that continuously stagger enemies on Heavy Attack.</div>
+      <div class="weapon-stat">📍 Giant skeleton jaws</div>
+      <div class="weapon-tag">🌑 Stagger Procs</div>
+    </div>
+
+    <div class="weapon-card">
+      <div class="weapon-icon">🗡️</div>
+      <div class="weapon-type">Two-Handed Sword</div>
+      <div class="weapon-name">Delesyian Longsword</div>
+      <div class="weapon-desc">Two-handed lifesteal monster. 23 base ATK, 5 Abyss Gear slots including Health Siphon. Exceptional sustain.</div>
+      <div class="weapon-stat">ATK 23 · CRIT Lv 2</div>
+      <div class="weapon-stat">REF 4 · 5 Abyss Slots</div>
+      <div class="weapon-tag">💀 Health Siphon Lv1</div>
+    </div>
+
+  </div>
+
+  <div class="section-label" style="margin-top: 1.5rem;">❄️ Elemental Swords</div>
+  <div class="weapon-grid">
+
+    <div class="weapon-card">
+      <div class="weapon-icon">❄️</div>
+      <div class="weapon-type">One-Handed Sword</div>
+      <div class="weapon-name">Chillfallen Sword</div>
+      <div class="weapon-desc">Early-to-mid game sword with Beastbane (+4% vs beasts). Solid ATK 17 with Attack Speed Lv 3.</div>
+      <div class="weapon-stat">ATK 17 · ATK SPD Lv 3</div>
+      <div class="weapon-stat">REF 3 · 3 Abyss Slots</div>
+      <div class="weapon-tag">❄️ Ice Damage</div>
+    </div>
+
+    <div class="weapon-card">
+      <div class="weapon-icon">⚡</div>
+      <div class="weapon-type">One-Handed Sword</div>
+      <div class="weapon-name">Electro-Mecha Longsword</div>
+      <div class="weapon-desc">Drops from Marni's Machina Knight boss in Gorthak. Lightning charge attacks. Can be refined.</div>
+      <div class="weapon-stat">📍 Gorthak · Boss drop</div>
+      <div class="weapon-tag">⚡ Lightning</div>
+    </div>
+
+  </div>
+
+  <div class="section-label" style="margin-top: 1.5rem;">🔥 Fire & Special</div>
+  <div class="weapon-grid">
+
+    <div class="weapon-card">
+      <div class="weapon-icon">🔥</div>
+      <div class="weapon-type">Two-Handed Katana</div>
+      <div class="weapon-name">Hwando</div>
+      <div class="weapon-desc">Two-handed katana found in the Witchwoods region. Fast stance-switching combos. Unique Korean-inspired design.</div>
+      <div class="weapon-stat">📍 Witchwoods, Hernand</div>
+      <div class="weapon-tag">🔥 Fire Stance</div>
+    </div>
+
+    <div class="weapon-card">
+      <div class="weapon-icon">🗡️</div>
+      <div class="weapon-type">One-Handed Sword</div>
+      <div class="weapon-name">Crow's Pursuit (Tauria Curved Sword)</div>
+      <div class="weapon-desc">Better Heavy Attack Abyss Gear than Darkbringer. Unlocked via main quest progression.</div>
+      <div class="weapon-stat">📍 Quest reward</div>
+      <div class="weapon-tag">🌑 Heavy Attack Gear</div>
+    </div>
+
+  </div>
+
+  <div class="section-label" style="margin-top: 1.5rem;">🗡️ Polearms & Spears</div>
+  <div class="weapon-grid">
+
+    <div class="weapon-card">
+      <div class="weapon-icon">🔱</div>
+      <div class="weapon-type">Spear</div>
+      <div class="weapon-name">Cannon Spear (Rhinard)</div>
+      <div class="weapon-desc">Craftable at any blacksmith. Fires projectiles when you Heavy Attack while blocking or using Stab input. Recipe at Glenbright Manor.</div>
+      <div class="weapon-stat">📍 Glenbright Manor book</div>
+      <div class="weapon-tag">💥 Projectile</div>
+    </div>
+
+    <div class="weapon-card">
+      <div class="weapon-icon">🔱</div>
+      <div class="weapon-type">Spear</div>
+      <div class="weapon-name">Kuku Laser Cannon Spear</div>
+      <div class="weapon-desc">Upgraded Cannon Spear recipe unlocked after clearing Sanctum of Absolution (Hernand) + Sanctum of Veneration (Deleysia).</div>
+      <div class="weapon-stat">📍 Crafted — endgame</div>
+      <div class="weapon-tag">⚡ Laser Projectile</div>
+    </div>
+
+    <div class="weapon-card">
+      <div class="weapon-icon">🔱</div>
+      <div class="weapon-type">Spear</div>
+      <div class="weapon-name">Electro-Mecha Spear</div>
+      <div class="weapon-desc">Spear variant of Electro-Mecha Longsword. ATK 30 base, Lv 1 Movement Speed. 5 charges. Found in Regent's Rise.</div>
+      <div class="weapon-stat">📍 Regent's Rise</div>
+      <div class="weapon-tag">⚡ Lightning · 5 Charges</div>
+    </div>
+
+    <div class="weapon-card">
+      <div class="weapon-icon">🔱</div>
+      <div class="weapon-type">Spear</div>
+      <div class="weapon-name">Kuku Lightning Spear</div>
+      <div class="weapon-desc">Craftable upgrade of Electro-Mecha Spear. 10 charges instead of 5. Can be refined. Better than base version.</div>
+      <div class="weapon-stat">📍 Crafted</div>
+      <div class="weapon-tag">⚡ 10 Charges · Refinable</div>
+    </div>
+
+  </div>
+
+  <div class="section-label" style="margin-top: 1.5rem;">🏹 Bows & Ranged</div>
+  <div class="weapon-grid">
+
+    <div class="weapon-card">
+      <div class="weapon-icon">🏹</div>
+      <div class="weapon-type">Longbow</div>
+      <div class="weapon-name">Shadowthorn Bow</div>
+      <div class="weapon-desc">Part of the Shadowthorn armor set. Unmatched range and headshot multiplier ×2.5. Best stealth ranged option.</div>
+      <div class="weapon-stat">📍 Shadowthorn Set</div>
+      <div class="weapon-tag">🎯 Precision · Stealth</div>
+    </div>
+
+    <div class="weapon-card">
+      <div class="weapon-icon">🪃</div>
+      <div class="weapon-type">Crossbow</div>
+      <div class="weapon-name">Thunderbolt Bolt</div>
+      <div class="weapon-desc">Armor-piercing bolts stun armored enemies. Found in Thornwood Depths. Great for heavy knight enemies.</div>
+      <div class="weapon-stat">📍 Thornwood Depths</div>
+      <div class="weapon-tag">⚡ Stun · Armor Pierce</div>
+    </div>
+
+  </div>
+
+  <div class="section-label" style="margin-top: 1.5rem;">🛡️ Unique Armor & Accessories</div>
+  <div class="weapon-grid">
+
+    <div class="weapon-card">
+      <div class="weapon-icon">🤖</div>
+      <div class="weapon-type">Helmet</div>
+      <div class="weapon-name">Marni Laser Helmet</div>
+      <div class="weapon-desc">Plate armor helmet that fires lasers from its eyes. Found inside Marni's Masterium, southeastern Delesyia. Upgradeable to Kuku Marni Laser Helmet.</div>
+      <div class="weapon-stat">📍 Marni's Masterium</div>
+      <div class="weapon-tag">⚡ Laser Eyes</div>
+    </div>
+
+    <div class="weapon-card">
+      <div class="weapon-icon">🤖</div>
+      <div class="weapon-type">Helmet</div>
+      <div class="weapon-name">Kuku Marni Laser Helmet</div>
+      <div class="weapon-desc">Upgraded Marni Laser Helmet at Kilnden Workshop. 3 additional laser charges + significantly lower cooldown.</div>
+      <div class="weapon-stat">📍 Kilnden Workshop upgrade</div>
+      <div class="weapon-tag">⚡⚡⚡ 3 Extra Charges</div>
+    </div>
+
+    <div class="weapon-card">
+      <div class="weapon-icon">🤠</div>
+      <div class="weapon-type">Hat</div>
+      <div class="weapon-name">Deceiver's Fedora (Cowboy Hat)</div>
+      <div class="weapon-desc">Lets you cheat at Crimson Desert's Duo/Seotda minigame. Buy from Mineral vendor in Tashkalp — requires defeating Muskan + vendor Trust at 100.</div>
+      <div class="weapon-stat">📍 Tashkalp Mineral Vendor</div>
+      <div class="weapon-tag">🤠 Drip · Seotda Cheat</div>
+    </div>
+
+    <div class="weapon-card">
+      <div class="weapon-icon">🥊</div>
+      <div class="weapon-type">Gauntlets</div>
+      <div class="weapon-name">Combat God's Plate Gloves</div>
+      <div class="weapon-desc">Drops from Muskan, Tashkalp Bonepit champion. Showstopper Abyss Gear deals bonus Electric damage on Unarmed Attacks.</div>
+      <div class="weapon-stat">📍 Tashkalp Bonepit</div>
+      <div class="weapon-tag">⚡ Electric Unarmed</div>
+    </div>
+
+  </div>
+
+  <div class="section-label" style="margin-top: 1.5rem;">🔥 Kuku Elemental Armor Set (Endgame)</div>
+  <div class="weapon-grid">
+
+    <div class="weapon-card">
+      <div class="weapon-icon">🔥</div>
+      <div class="weapon-type">Full Set</div>
+      <div class="weapon-name">Kuku Flame Armor</div>
+      <div class="weapon-desc">Ice armor variant. Each piece gives Critical Rate. Absorbs fire damage — explodes when full, damaging all nearby enemies.</div>
+      <div class="weapon-stat">❄️ Ice Resistance</div>
+      <div class="weapon-stat">⚔️ Critical Rate</div>
+      <div class="weapon-tag">🔥 Absorbs + Explodes</div>
+    </div>
+
+    <div class="weapon-card">
+      <div class="weapon-icon">❄️</div>
+      <div class="weapon-type">Full Set</div>
+      <div class="weapon-name">Kuku Ice Armor</div>
+      <div class="weapon-desc">Ice armor variant. Each piece gives Movement Speed. Absorbs ice damage — explodes when full, damaging all nearby enemies.</div>
+      <div class="weapon-stat">❄️ Ice Resistance</div>
+      <div class="weapon-stat">🏃 Movement Speed</div>
+      <div class="weapon-tag">❄️ Absorbs + Explodes</div>
+    </div>
+
+    <div class="weapon-card">
+      <div class="weapon-icon">⚡</div>
+      <div class="weapon-type">Full Set</div>
+      <div class="weapon-name">Kuku Lightning Armor</div>
+      <div class="weapon-desc">Lightning armor variant. Each piece gives Attack Speed. Absorbs lightning damage — explodes when full, damaging all nearby enemies.</div>
+      <div class="weapon-stat">⚡ Lightning Resistance</div>
+      <div class="weapon-stat">⚡ Attack Speed</div>
+      <div class="weapon-tag">⚡ Absorbs + Explodes</div>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <p style="margin-bottom: 0.4rem;">Sources: <a href="https://www.ign.com/wikis/crimson-desert" target="_blank">IGN</a> · <a href="https://gamerant.com/crimson-desert-frostcursed-armor-set-locations/" target="_blank">GameRant</a> · <a href="https://www.powerpyx.com/" target="_blank">Powerpyx</a></p>
+  <p>Crimson Desert Armor & Weapon Guide · All data compiled April 2026</p>
+</footer>
+
+<script>
+  function switchTab(id) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    event.target.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function togglePiece(el) {
+    el.closest('.piece-row').classList.toggle('open');
+  }
+
+  if (window.location.hash) {
+    const target = document.querySelector(window.location.hash);
+    if (target) {
+      target.classList.add('open');
+      setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+    }
+  }
+</script>
+
+</body>
+</html>
